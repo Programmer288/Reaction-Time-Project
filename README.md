@@ -43,6 +43,7 @@ function nextRound() {
 onEvent("reactBtn", "click", function() {
  setProperty("reactBtn", "x", randomNumber(1, 200));
 
+//error caught here. Pressing the button would result in the program moving to the next round; even though input was wrong. removed function call.
 if (waiting) {
     setText("statusText", "Too early!");
     return;
