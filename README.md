@@ -1,4 +1,6 @@
+//I started by coding in code.org's App Lab, then pasted to GitHub. 100% orginal work.
 # Reaction-Time-Project
+//variables
 var startTime = 0;
 var reactionTime = 0;
 var bestTime = 999;
@@ -14,6 +16,7 @@ onEvent("startBtn", "click", function() {
   bestTime = 999;
   nextRound();
 });
+//Makes the program start the next round.
 function nextRound() {
   if (round >= maxRounds) {
     return showResults;
@@ -36,6 +39,7 @@ function nextRound() {
     waiting = false;
   }, delay);
 }
+//registers input for the reaction button; timing must be perfect.
 onEvent("reactBtn", "click", function() {
  setProperty("reactBtn", "x", randomNumber(1, 200));
 
