@@ -1,4 +1,4 @@
-//I started by coding in code.org's App Lab, then pasted to GitHub. 100% original work.
+//I started by coding in code.org's App Lab, then pasted to GitHub. 100% original work, no AI used.
 # Reaction-Time-Project
 //variables
 var startTime = 0;
