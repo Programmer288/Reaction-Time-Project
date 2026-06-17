@@ -1,61 +1,123 @@
-//I started by coding in code.org's App Lab, then pasted to GitHub. Then, AI helped me translate to Java. The user inputs factors then plays a reaction game. The program then gives the user a rating.
-import java.util.Random;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.Scanner;
+//I started by coding in code.org's App Lab, then pasted to GitHub. Then, AI helped me translate to Java using JavaFX. The user inputs factors then plays a reaction game. The program then gives the user a rating.
 
-public class ReactionGame {
 
-    // Game state
-    private long startTime = 0;
-    private long reactionTime = 0;
-    private long bestTime = Long.MAX_VALUE;
-    private long totalTime = 0;
-    private int round = 0;
-    private final int maxRounds = 5;
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import javafx.geometry.Pos;
+import javafx.scene.paint.Color;
+import javafx.animation.PauseTransition;
+import javafx.util.Duration;
 
-    private boolean waiting = false;
-    private boolean canReact = false;
+public class ReactionGameFX extends Application {
 
-    private final Random random = new Random();
-    private final Timer timer = new Timer();
+    int round = 0;
+    int maxRounds = 5;
 
-    public void startGame() {
+    long startTime;
+    long reactionTime;
+    long totalTime = 0;
+    long bestTime = Long.MAX_VALUE;
+
+    boolean waiting = false;
+    boolean canReact = false;
+
+    int sleep = 0;
+    int screenTime = 0;
+    int timeScore = 0;
+    double score = 0;
+
+    Label status = new Label("Press Start");
+    Label results = new Label();
+
+    ComboBox<Integer> sleepBox = new ComboBox<>();
+    ComboBox<Integer> screenBox = new ComboBox<>();
+    ComboBox<String> timeBox = new ComboBox<>();
+
+    Button startBtn = new Button("Start");
+    Button clickBtn = new Button("Click!");
+
+    VBox root = new VBox(10);
+
+    @Override
+    public void start(Stage stage) {
+
+        // Dropdown setup
+        sleepBox.getItems().addAll(1,2,3,4,5,6,7,8);
+        screenBox.getItems().addAll(1,2,3,4,5,6,7,8);
+
+        timeBox.getItems().addAll("Morning", "Afternoon", "Evening");
+
+        root.getChildren().addAll(
+            new Label("Sleep Hours"), sleepBox,
+            new Label("Screen Time"), screenBox,
+            new Label("Time of Day"), timeBox,
+            startBtn, clickBtn, status, results
+        );
+
+        root.setAlignment(Pos.CENTER);
+
+        clickBtn.setDisable(true);
+
+        startBtn.setOnAction(e -> startGame());
+        clickBtn.setOnAction(e -> handleClick());
+
+        stage.setScene(new Scene(root, 400, 400));
+        stage.setTitle("Reaction Game");
+        stage.show();
+    }
+
+    void startGame() {
+        // Get inputs
+        sleep = sleepBox.getValue();
+        screenTime = screenBox.getValue();
+        String time = timeBox.getValue();
+
+        if (time.equals("Afternoon")) timeScore = 5;
+        else if (time.equals("Evening")) timeScore = 10;
+        else timeScore = 1;
+
         round = 0;
         totalTime = 0;
         bestTime = Long.MAX_VALUE;
+
+        startBtn.setDisable(true);
+        clickBtn.setDisable(false);
+
         nextRound();
     }
 
-    private void nextRound() {
+    void nextRound() {
         if (round >= maxRounds) {
             showResults();
             return;
         }
 
         round++;
-        System.out.println("\nRound " + round);
-        System.out.println("Wait for GREEN...");
+        status.setText("Wait for green...");
+        root.setStyle("-fx-background-color: red;");
 
         waiting = true;
         canReact = false;
 
-        int delay = 2000 + random.nextInt(3000); // 2000–5000 ms
+        int delay = 2000 + (int)(Math.random() * 3000);
 
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                System.out.println("CLICK NOW! (GREEN)");
-                startTime = System.currentTimeMillis();
-                canReact = true;
-                waiting = false;
-            }
-        }, delay);
+        PauseTransition pause = new PauseTransition(Duration.millis(delay));
+        pause.setOnFinished(e -> {
+            root.setStyle("-fx-background-color: green;");
+            status.setText("CLICK!");
+            startTime = System.currentTimeMillis();
+            canReact = true;
+            waiting = false;
+        });
+        pause.play();
     }
 
-    public void react() {
+    void handleClick() {
         if (waiting) {
-            System.out.println("Too early!");
+            status.setText("Too early!");
             return;
         }
 
@@ -63,43 +125,44 @@ public class ReactionGame {
             reactionTime = System.currentTimeMillis() - startTime;
             totalTime += reactionTime;
 
-            System.out.println("Reaction: " + reactionTime + " ms");
-
             if (reactionTime < bestTime) {
                 bestTime = reactionTime;
             }
 
+            status.setText("Reaction: " + reactionTime + " ms");
             canReact = false;
 
-            timer.schedule(new TimerTask() {
-                @Override
-                public void run() {
-                    nextRound();
-                }
-            }, 1000);
+            PauseTransition pause = new PauseTransition(Duration.seconds(1));
+            pause.setOnFinished(e -> nextRound());
+            pause.play();
         }
     }
 
-    private void showResults() {
-        double average = (double) totalTime / maxRounds;
+    void showResults() {
+        long avg = totalTime / maxRounds;
 
-        System.out.println("\nDONE!");
-        System.out.println("Avg: " + average + " ms");
-        System.out.println("Best: " + bestTime + " ms");
-        System.out.println("Machine: 10 ms (placeholder)");
+        // Score calculation (your formula)
+        score = (sleep * 2 + timeScore * 3) + (screenTime * 1.5 + avg * 0.01);
+
+        String message;
+        if (score == 14) message = "Very good!";
+        else if (score == 10) message = "It's ok.";
+        else message = "You need some help.";
+
+        results.setText(
+            "Done!\n" +
+            "Avg: " + avg + " ms\n" +
+            "Best: " + bestTime + " ms\n" +
+            "Score: " + score + "\n" +
+            message
+        );
+
+        status.setText("Finished!");
+        root.setStyle("-fx-background-color: white;");
+        startBtn.setDisable(false);
     }
 
-    // Simple test runner
     public static void main(String[] args) {
-        ReactionGame game = new ReactionGame();
-        Scanner scanner = new Scanner(System.in);
-
-        game.startGame();
-
-        System.out.println("Press ENTER when you see GREEN...");
-while (true) {
-            scanner.nextLine();
-            game.react();
-        }
+        launch();
     }
 }
