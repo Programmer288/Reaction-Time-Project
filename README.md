@@ -1,4 +1,4 @@
-//I started by coding in code.org's App Lab, then pasted to GitHub. Then, AI helped me translate to Java using JavaFX. The user inputs factors then plays a reaction game. The program then gives the user a rating.
+//I started by coding in code.org's App Lab, then pasted to GitHub. Then, AI helped me translate to Java using JavaFX. The user inputs factors then plays a reaction game. The program then gives the user a rating. AP CSA helped me with the basics of Java.
 
 
 import javafx.application.Application;
