@@ -1,168 +1,112 @@
-//I started by coding in code.org's App Lab, then pasted to GitHub. Then, AI recommended that i use JavaFX. The user inputs factors then plays a reaction game. The program then gives the user a rating. AP CSA helped me with the basics of Java, while i asked for help with AI when stuck. 
+//I started by coding in code.org's App Lab, then pasted to GitHub. Then, AI recommended that i use JavaFX. The user inputs factors then plays a reaction game. The program then gives the user a rating. AP CSA helped me with the basics of Java, while i asked for help with AI when stuck. I am a complete beginner.
+ (javascript)
+var time = 0;
+var sleep = 0;
+var screenTime = 0;
+var reactionTime = 0;
+var score;
+var startTime = 0;
+var bestTime = 999;
+var totalTime = 0;
+var round = 0;
+var maxRounds = 5;
+var waiting = false;
+var canReact = false;
+var timeScore;
+hideElement("Upbutton");
+onEvent("startBut", "click", function( ) {
+  showElement("Upbutton");
+  hideElement("dropdown4");
+  hideElement("dropdown2");
+  hideElement("dropdown3");
+  round = 0;
+  totalTime = 0;
+  bestTime = 999;
+  nextRound();
+  hideElement("startBut");
+});
+if (score == 14) {
+  setText("text_area1", "Very good!");
+} else if ((score == 10)) {
+  setText("text_area1", "Its ok.");
+} else {
+  setText("text_area1", "You need some help.");
+}
+score = (sleep * 2 + time * 3) + (screenTime * 1.5 + reactionTime * 2);
+sleep = getNumber("dropdown4");
+screenTime = getNumber("dropdown2");
+time = getText("dropdown3");
+if (getText("dropdown3") == "Afternoon") {
+  timeScore = 5;
+} else if ((getText("dropdown3") == "Evening")) {
+  timeScore = 10;
+} else {
+  timeScore = 1;
+}
+if (reactionTime == 510) {
+  setText("text_area2", "Too slow! You need help!");
+}
+function nextRound() {
+  if (round >= maxRounds) {
+   showResults();
+   return;
+  }
+
+  round++;
+  setText("text_area2", "Wait for green...");
+  setProperty("screen1", "background-color", "red");
+
+  canReact = false;
+  waiting = true;
+
+  var delay = randomNumber(2000, 5000);
+
+  setTimeout(function() {
+    setProperty("screen1", "background-color", "green");
+    setText("text_area2", "CLICK!");
+    startTime = getTime();
+    canReact = true;
+    waiting = false;
+  }, delay);
+}
+onEvent("Upbutton", "click", function() {
+ setProperty("Upbutton", "x", randomNumber(1, 200));
+
+if (waiting) {
+    setText("text_area2", "Too early!");
+    return;
+  }
+
+if (canReact) {
+    reactionTime = getTime() - startTime;
+
+    totalTime += reactionTime;
 
 
-import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
-import javafx.geometry.Pos;
-import javafx.scene.paint.Color;
-import javafx.animation.PauseTransition;
-import javafx.util.Duration;
+    setText("text_area2", "Reaction: " + reactionTime + " ms");
 
-public class ReactionGameFX extends Application {
+    canReact = false;
 
-    int round = 0;
-    int maxRounds = 5;
+    setTimeout(nextRound, 1000);
+  }
+if (reactionTime < bestTime) {
+  bestTime = reactionTime;
+}
+});
+function showResults() {
+  var average = totalTime / maxRounds;
 
-    long startTime;
-    long reactionTime;
-    long totalTime = 0;
-    long bestTime = Long.MAX_VALUE;
-
-    boolean waiting = false;
-    boolean canReact = false;
-
-    int sleep = 0;
-    int screenTime = 0;
-    int timeScore = 0;
-    double score = 0;
-
-    Label status = new Label("Press Start");
-    Label results = new Label();
-
-    ComboBox<Integer> sleepBox = new ComboBox<>();
-    ComboBox<Integer> screenBox = new ComboBox<>();
-    ComboBox<String> timeBox = new ComboBox<>();
-
-    Button startBtn = new Button("Start");
-    Button clickBtn = new Button("Click!");
-
-    VBox root = new VBox(10);
-
-    @Override
-    public void start(Stage stage) {
-
-        // Dropdown setup
-        sleepBox.getItems().addAll(1,2,3,4,5,6,7,8);
-        screenBox.getItems().addAll(1,2,3,4,5,6,7,8);
-
-        timeBox.getItems().addAll("Morning", "Afternoon", "Evening");
-
-        root.getChildren().addAll(
-            new Label("Sleep Hours"), sleepBox,
-            new Label("Screen Time"), screenBox,
-            new Label("Time of Day"), timeBox,
-            startBtn, clickBtn, status, results
-        );
-
-        root.setAlignment(Pos.CENTER);
-
-        clickBtn.setDisable(true);
-
-        startBtn.setOnAction(e -> startGame());
-        clickBtn.setOnAction(e -> handleClick());
-
-        stage.setScene(new Scene(root, 400, 400));
-        stage.setTitle("Reaction Game");
-        stage.show();
-    }
-
-    void startGame() {
-        // Get inputs
-        sleep = sleepBox.getValue();
-        screenTime = screenBox.getValue();
-        String time = timeBox.getValue();
-
-        if (time.equals("Afternoon")) timeScore = 5;
-        else if (time.equals("Evening")) timeScore = 10;
-        else timeScore = 1;
-
-        round = 0;
-        totalTime = 0;
-        bestTime = Long.MAX_VALUE;
-
-        startBtn.setDisable(true);
-        clickBtn.setDisable(false);
-
-        nextRound();
-    }
-
-    void nextRound() {
-        if (round >= maxRounds) {
-            showResults();
-            return;
-        }
-
-        round++;
-        status.setText("Wait for green...");
-        root.setStyle("-fx-background-color: red;");
-
-        waiting = true;
-        canReact = false;
-
-        int delay = 2000 + (int)(Math.random() * 3000);
-
-        PauseTransition pause = new PauseTransition(Duration.millis(delay));
-        pause.setOnFinished(e -> {
-            root.setStyle("-fx-background-color: green;");
-            status.setText("CLICK!");
-            startTime = System.currentTimeMillis();
-            canReact = true;
-            waiting = false;
-        });
-        pause.play();
-    }
-
-    void handleClick() {
-        if (waiting) {
-            status.setText("Too early!");
-            return;
-        }
-
-        if (canReact) {
-            reactionTime = System.currentTimeMillis() - startTime;
-            totalTime += reactionTime;
-
-            if (reactionTime < bestTime) {
-                bestTime = reactionTime;
-            }
-
-            status.setText("Reaction: " + reactionTime + " ms");
-            canReact = false;
-
-            PauseTransition pause = new PauseTransition(Duration.seconds(1));
-            pause.setOnFinished(e -> nextRound());
-            pause.play();
-        }
-    }
-
-    void showResults() {
-        long avg = totalTime / maxRounds;
-
-        // Score calculation (your formula)
-        score = (sleep * 2 + timeScore * 3) + (screenTime * 1.5 + avg * 0.01);
-
-        String message;
-        if (score == 14) message = "Very good!";
-        else if (score == 10) message = "It's ok.";
-        else message = "You need some help.";
-
-        results.setText(
-            "Done!\n" +
-            "Avg: " + avg + " ms\n" +
-            "Best: " + bestTime + " ms\n" +
-            "Score: " + score + "\n" +
-            message
-        );
-
-        status.setText("Finished!");
-        root.setStyle("-fx-background-color: white;");
-        startBtn.setDisable(false);
-    }
-
-    public static void main(String[] args) {
-        launch();
-    }
+  setScreen("screen2");
+  setText("text_area2", "Done!");
+  setText("text_area4",
+    "Avg: " + average + " ms\n" +
+    "Best: " + bestTime + " ms\n" +
+    "Machine: 10 ms"
+  );
+  return average;
+}
+showScore();
+function showScore() {
+  setText("text_area3", score);
+  return score;
 }
