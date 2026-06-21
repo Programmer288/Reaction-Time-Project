@@ -1,4 +1,4 @@
-//I started by coding in code.org's App Lab, then pasted to GitHub. Then, AI recommended that i use JavaFX. The user inputs factors then plays a reaction game. The program then gives the user a rating. AP CSA helped me with the basics of Java, while i asked for help with AI when stuck. I am a complete beginner.
+//I started by coding in code.org's App Lab, then pasted to GitHub. AI assisted me in one line of code. Also helped with debugging. My own original code and project driven by my passion for hands-on research. Spent 2 days brainstorming.
  (javascript)
 var time = 0;
 var sleep = 0;
