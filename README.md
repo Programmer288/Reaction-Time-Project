@@ -1,4 +1,4 @@
-//I started by coding in code.org's App Lab, then pasted to GitHub. AI assisted me in one line of code. Also helped with debugging. My own original code and project driven by my passion for hands-on research. Spent 2 days brainstorming.
+//I started by coding in code.org's App Lab, then pasted to GitHub. AI assisted me in one line of code. Also somewhat helped with debugging, however i did most of it. My own original code and project driven by my passion for hands-on research. Spent 2 days brainstorming, then 3 hours a week for 1 week making code, then 4 hours a week finding a control group to conduct research. 
  (javascript)
 var time = 0;
 var sleep = 0;
