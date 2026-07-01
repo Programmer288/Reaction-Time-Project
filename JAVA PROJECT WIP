@@ -2,7 +2,8 @@ Since i am a simple beginner at Java, i decided to make an introductory museum-l
 Many students solutions will naturally look similar, since there are many straightforward ways to implement this assignment. 
 I used a tutorial for a text-adventure based game; then created my own original idea that can benefit from the tutorial code. 
 The idea and passion are all mine. Sources: https://www.youtube.com/watch?v=WZUs-gI76WY
- 
+import java.util.ArrayList
+import java.util.List
 import java.util.Map;
 import java.util.Scanner; 
 System.out.println("Welcome to my musuem!")
