@@ -1,7 +1,8 @@
 Since i am a simple beginner at Java, i decided to make an introductory museum-like game. 
 Many students solutions will naturally look similar, since there are many straightforward ways to implement this assignment. 
-I wrote this code myself, although i did have some help. The idea and passion are all mine. Sources: https://www.youtube.com/watch?v=WZUs-gI76WY
-
+I used a tutorial for a text-adventure based game; then created my own original idea that can benefit from the tutorial code. 
+The idea and passion are all mine. Sources: https://www.youtube.com/watch?v=WZUs-gI76WY
+ 
 import java.util.Map;
 import java.util.Scanner; 
 System.out.println("Welcome to my musuem!")
@@ -15,7 +16,7 @@ String input = scanner.nextLine();
 if (input equals = " ")) {
 System.out.println(SPACE CLICKED!)
 
-
+//tutorial
    while (true) {
        String input = scanner.nextLine();
        if (input.equalsIgnoreCase("quit")) {
@@ -24,7 +25,7 @@ System.out.println(SPACE CLICKED!)
        }
    processCommand(input);
    }
-   
+   //tutorail
 public class Room {
     private string description;
     private Man<String, Room> exits;
@@ -42,13 +43,14 @@ public Room getExit(String direction) {
 public String getDescription() {
     return description;
 }
-
+//47 is from the tutorial. However, i used this code strucure to apply this logic to other rooms
 Room startRoom = new Room("You are in a very dark dungeon.. what secrets hide in here?");
 Room RoboticsRoom = new Room("The door to the west leads to a beatiful garden.");
 Room AIRoom = new Room("The door to the west leads to a beatiful garden.");
+//Tutorial code, however i used my idea.
 startRoom.setExit("Robotics", RoboticsRoom)
 roboticsRoom.setExit("AI", AIRoom)
-
+//tutorial, but for my museum rooms
 case "learn Robotics":
 Room nextRoom = currentRoom.getExit("Robotics");
 if (nextRoom != null) {
@@ -60,3 +62,19 @@ Room nextRoom = currentRoom.getExit("AI");
 if (nextRoom != null) {
 currentRoom = nextRoom;
 System.out.print.ln(currentRoom.getDescription)
+
+case inspect
+if currentRoom.getItem().eqauls
+System.out.println
+
+case inspect
+if currentRoom.getItem().eqauls
+System.out.println
+
+case inspect
+if currentRoom.getItem().eqauls
+System.out.println
+
+case inspect
+if currentRoom.getItem().eqauls
+System.out.println
