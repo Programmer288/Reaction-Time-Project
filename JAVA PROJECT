@@ -1,14 +1,21 @@
-public class Game {
-  public static void main(String args[]) {
-   Scanner scanner = new Scanner(system.in)
-   private static void process Command(string command) {
-   switch (command.toLowercase()) {
-    case "help"
-    break;
-    case "look"
-    break;
-    default: System.out.println("Unknown command.")
-   }
+Since i am a simple beginner at Java, i decided to make an introductory museum-like game. 
+Many students solutions will naturally look similar, since there are many straightforward ways to implement this assignment. 
+I wrote this code myself, although i did have some help. The idea and passion are all mine. Sources: https://www.youtube.com/watch?v=WZUs-gI76WY
+
+import java.util.Map;
+import java.util.Scanner; 
+System.out.println("Welcome to my musuem!")
+System.out.println("The objective of this game is to learn about which technological fact intriguees you the most!")
+System.out.println("Press the SPACE key to start.")
+
+public class consoleStart {
+public static void main(String[] args) {
+Scanner scanner = new Scanner(System.in);
+String input = scanner.nextLine();
+if (input equals = " ")) {
+System.out.println(SPACE CLICKED!)
+
+
    while (true) {
        String input = scanner.nextLine();
        if (input.equalsIgnoreCase("quit")) {
@@ -18,6 +25,33 @@ public class Game {
    processCommand(input);
    }
    
-   System.out.println("Welcome to Legends of Asteria!")
-   System.out.println("The objective of this game is to choose your own adventure!")
-   System.out.println("Type 'help' to see a list of commands.")
+public class Room {
+    private string description;
+    private Man<String, Room> exits;
+    
+    public Room(String description) {
+        this.description = description;
+        this.exits = new HashMap<>();
+    }
+    public void setExit(String direction, Room room) {
+     exits.put(direction, room);
+    }
+public Room getExit(String direction) {
+    return exits.get(direction);
+}
+public String getDescrption() {
+    return description;
+}
+
+Room startRoom = new Room("You are in a very dark dungeon.. what secrets hide in here?");
+Room eastRoom = new Room("The door to the west leads to a beatiful garden.");
+Room westRoom = new Room("The door to the west leads to a beatiful garden.");
+startRoom.setExit("east", eastRoom)
+eastRoom.setExit("west", westRoom)
+case "go east":
+Room nextRoom = currentRoom.getExit(east);
+if (nextRoom != null) {
+currentRoom = nextRoom;
+System.out.print.ln(currentRoom.getDescription)
+
+case "look" 
