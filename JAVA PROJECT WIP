@@ -39,17 +39,17 @@ public class Room {
 public Room getExit(String direction) {
     return exits.get(direction);
 }
-public String getDescrption() {
+public String getDescription() {
     return description;
 }
 
 Room startRoom = new Room("You are in a very dark dungeon.. what secrets hide in here?");
-Room eastRoom = new Room("The door to the west leads to a beatiful garden.");
-Room westRoom = new Room("The door to the west leads to a beatiful garden.");
-startRoom.setExit("east", eastRoom)
-eastRoom.setExit("west", westRoom)
+Room RoboticsRoom = new Room("The door to the west leads to a beatiful garden.");
+Room AIRoom = new Room("The door to the west leads to a beatiful garden.");
+startRoom.setExit("Robotics", RoboticsRoom)
+eastRoom.setExit("AI", AIRoom)
 case "go Robotics":
-Room nextRoom = currentRoom.getExit(east);
+Room nextRoom = currentRoom.getExit(Robotics);
 if (nextRoom != null) {
 currentRoom = nextRoom;
 System.out.print.ln(currentRoom.getDescription)
