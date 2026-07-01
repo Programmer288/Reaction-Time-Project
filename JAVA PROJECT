@@ -1,1 +1,23 @@
-
+public class Game {
+  public static void main(String args[]) {
+   Scanner scanner = new Scanner(system.in)
+   private static void process Command(string command) {
+   switch (command.toLowercase()) {
+    case "help"
+    break;
+    case "look"
+    break;
+    default: System.out.println("Unknown command.")
+   }
+   while (true) {
+       String input = scanner.nextLine();
+       if (input.equalsIgnoreCase("quit")) {
+           System.out.println("Thank you for playing!")
+           break;
+       }
+   processCommand(input);
+   }
+   
+   System.out.println("Welcome to Legends of Asteria!")
+   System.out.println("The objective of this game is to choose your own adventure!")
+   System.out.println("Type 'help' to see a list of commands.")
