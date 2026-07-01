@@ -47,15 +47,16 @@ Room startRoom = new Room("You are in a very dark dungeon.. what secrets hide in
 Room RoboticsRoom = new Room("The door to the west leads to a beatiful garden.");
 Room AIRoom = new Room("The door to the west leads to a beatiful garden.");
 startRoom.setExit("Robotics", RoboticsRoom)
-eastRoom.setExit("AI", AIRoom)
-case "go Robotics":
-Room nextRoom = currentRoom.getExit(Robotics);
+roboticsRoom.setExit("AI", AIRoom)
+
+case "learn Robotics":
+Room nextRoom = currentRoom.getExit("Robotics");
 if (nextRoom != null) {
 currentRoom = nextRoom;
 System.out.print.ln(currentRoom.getDescription)
 
-case "go AI":
-Room nextRoom = currentRoom.getExit(AI);
+case "learn AI":
+Room nextRoom = currentRoom.getExit("AI");
 if (nextRoom != null) {
 currentRoom = nextRoom;
 System.out.print.ln(currentRoom.getDescription)
