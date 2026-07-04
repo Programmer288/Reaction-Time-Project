@@ -17,19 +17,20 @@ String input = scanner.nextLine();
 if (input equals = " ")) {
 System.out.println(SPACE CLICKED!)
 
-//tutorial
    while (true) {
-       String input = scanner.nextLine();
+   System.out.println("Now what would you like to do?")       
+   String input = scanner.nextLine();
        if (input.equalsIgnoreCase("quit")) {
            System.out.println("Thank you for playing!")
            break;
        }
    processCommand(input);
    }
-   //tutorail
+  scanner.close(); 
+
 public class Room {
     private string description;
-    private Man<String, Room> exits;
+    private Map<String, Room> exits;
     
     public Room(String description) {
         this.description = description;
@@ -53,16 +54,16 @@ startRoom.setExit("Robotics", RoboticsRoom)
 roboticsRoom.setExit("AI", AIRoom)
 //tutorial, but for my museum rooms
 case "learn Robotics":
+case "learn AI"
+String.direction = input.replace("go, "")
 Room nextRoom = currentRoom.getExit("Robotics");
 if (nextRoom != null) {
 currentRoom = nextRoom;
 System.out.print.ln(currentRoom.getDescription)
+} else {
+System.out.print.ln(That is off limits.)
 
-case "learn AI":
-Room nextRoom = currentRoom.getExit("AI");
-if (nextRoom != null) {
-currentRoom = nextRoom;
-System.out.print.ln(currentRoom.getDescription)
+
 
 case inspect
 if currentRoom.getItem().eqauls
