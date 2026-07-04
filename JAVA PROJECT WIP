@@ -54,14 +54,14 @@ startRoom.setExit("Robotics", RoboticsRoom)
 roboticsRoom.setExit("AI", AIRoom)
 
 case "learn Robotics":
-case "learn AI"
+case "learn AI":
 String.direction = input.replace("go, "")
 Room nextRoom = currentRoom.getExit("Robotics");
 if (nextRoom != null) {
 currentRoom = nextRoom;
 System.out.print.ln(currentRoom.getDescription)
 } else {
-System.out.print.ln(That is off limits.)
+System.out.print.ln("That is off limits.")
 
 
 case inspect
