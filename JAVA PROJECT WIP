@@ -1,6 +1,6 @@
 Since i am a simple beginner at Java, i decided to make an introductory museum-like game. 
 Many students solutions will naturally look similar, since there are many straightforward ways to implement this assignment. 
-I used a tutorial for a text-adventure based game; then created my own original idea that can benefit from the tutorial code. 
+I used a tutorial for a text-adventure based game; then created my own original idea as well as building upon the code shown.
 The idea and passion are all mine. Sources: https://www.youtube.com/watch?v=WZUs-gI76WY
 import java.util.ArrayList
 import java.util.List
@@ -49,10 +49,10 @@ public String getDescription() {
 Room startRoom = new Room("You are in a very dark dungeon.. what secrets hide in here?");
 Room RoboticsRoom = new Room("The door to the west leads to a beatiful garden.");
 Room AIRoom = new Room("The door to the west leads to a beatiful garden.");
-//Tutorial code, however i used my idea.
+
 startRoom.setExit("Robotics", RoboticsRoom)
 roboticsRoom.setExit("AI", AIRoom)
-//tutorial, but for my museum rooms
+
 case "learn Robotics":
 case "learn AI"
 String.direction = input.replace("go, "")
@@ -62,7 +62,6 @@ currentRoom = nextRoom;
 System.out.print.ln(currentRoom.getDescription)
 } else {
 System.out.print.ln(That is off limits.)
-
 
 
 case inspect
