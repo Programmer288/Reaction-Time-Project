@@ -1,7 +1,7 @@
-//I started by coding in code.org's App Lab, then pasted to GitHub. AI assisted me in one line of code. Also somewhat helped with debugging, however i did most of it. My own original code and project driven by my passion for hands-on research. Spent 2 days brainstorming, then 3 hours a week for 1 week making code, then 4 hours a week finding a control group to conduct research. 
+//I started by coding in https://www.jdoodle.com/online-java-compiler, then pasted to GitHub. AI assisted me in one line of code. Also somewhat helped with debugging, however i did most of it. My own original code and project driven by my passion for hands-on research. Spent 2 days brainstorming, then 3 hours a week for 1 week making code, then 4 hours a week finding a control group to conduct research. 
  (java)
-import.java util.Randaom
-import. java util.scanner
+import java.util.Randaom
+import java.util.scanner
 
 public class ReactionGame { 
 
@@ -15,7 +15,7 @@ static int totalTime = 0;
 
 static final int MAX_ROUNDS = 5;
 
-public static void main(String[] args) throws InterruptedException {
+public static void main(String[] args) throws InterruptedException { //assisted with AI
 System.out.println("This is a reaction Time test.")
 System.out.println("Reaction Time Test");
 
