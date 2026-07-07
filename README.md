@@ -41,5 +41,11 @@ System.out.println("Reaction Time Test");
 
         double score = (sleep * 2) + (timeScore * 3)
                      + (screenTime * 1.5);
+System.out.println("\n-Press Enter to start.");
+input.nextLine();
+for (int round = 1; round <= MAX_Rounds; round++) {
+System.out.println(\nRound" + round);
+System.out.println("Wait...");
+
 
                      
