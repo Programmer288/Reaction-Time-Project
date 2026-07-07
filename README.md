@@ -5,18 +5,18 @@ import. java util.scanner
 
 public class ReactionGame { 
 
-static scannerInput = new Scanner(System.in)
+static scanner input = new Scanner(System.in)
 static Random rand = new Random();
 static int sleep;
 static int ReactionTime;
 static int screenTime;
-static int bestTime = Interger.MAX_VALUE;
+static int bestTime = Integer.MAX_VALUE;
 static int totalTime = 0;
 
 static final int MAX_ROUNDS = 5;
 
 public static void main(String[] args) throws InterruptedException {
-System.out.println("This is a reaction Time test."
+System.out.println("This is a reaction Time test.")
 System.out.println("Reaction Time Test");
 
         System.out.print("Hours of sleep: ");
@@ -46,6 +46,41 @@ input.nextLine();
 for (int round = 1; round <= MAX_Rounds; round++) {
 System.out.println(\nRound" + round);
 System.out.println("Wait...");
+Thread.sleep(rand.nextInt(3000) + 2000);
+
+System.out.println("GO!");
+
+long startTime = System.currentTimeMillis();
+
+input.nextLine();
+
+reactionTime = (int)(System.currentTimeMillis() - startTime);
+
+totalTime += reactionTime;
+
+if (reactionTime < bestTime) {
+bestTime = reactionTime;
+}
+
+System.out.println("Reaction Time: " + reactionTime + " ms");
+}
+
+int average = totalTime / MAX_ROUNDS;
+
+System.out.println("\n===== RESULTS =====");
+System.out.println("Average: " + average + " ms");
+System.out.println("Best: " + bestTime + " ms");
+System.out.println("Machine: 10 ms");
+
+System.out.println("\nHealth Score: " + score);
+
+if (score >= 14) {
+System.out.println("Very good!");
+} else if (score >= 10) {
+System.out.println("It's OK.");
+} else {
+System.out.println("You need some help.");
+}
 
 
                      
