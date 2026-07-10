@@ -17,9 +17,8 @@ static int totalTime = 0;
 static final int MAX_ROUNDS = 5;
 
 public static void main(String[] args) throws InterruptedException { //assisted with AI
-System.out.println("This is a reaction Time test.")
 System.out.println("Reaction Time Test");
-
+System.out.println("First input these factors.");
         System.out.print("Hours of sleep: ");
         sleep = input.nextInt();
 
@@ -28,7 +27,7 @@ System.out.println("Reaction Time Test");
         input.nextLine();
 
         System.out.print("Time of day (Morning, Afternoon, Evening): ");
-        String time = input.nextLine();
+        String Time = input.nextLine();
 
         int timeScore;
 
