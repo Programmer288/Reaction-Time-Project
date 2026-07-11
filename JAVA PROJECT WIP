@@ -1,43 +1,38 @@
 Since i am a simple beginner at Java, i decided to make an introductory museum-like game. 
 Many students solutions will naturally look similar, since there are many straightforward ways to implement this assignment. 
-I used a tutorial for a text-adventure based game; then created my own original idea as well as building upon the code shown.
-The idea and passion are all mine. Sources: https://www.youtube.com/watch?v=WZUs-gI76WY
+I created my own original idea as well as building the code shown. The idea and passion are all mine. 
+AI helped with some code, since i am a beginner.
 
 import java.util.Map;
 import java.util.Scanner; 
-System.out.println("Welcome to my musuem!")
-System.out.println("The objective of this game is to learn about which technological fact intriguees you the most!")
-System.out.println("Press the SPACE key to start.")
 
 public class consoleStart {
-public static void main(String[] args) {
+
+static String currentArea = "";
+public static void main(String[] args) { //AI helped
 Scanner scanner = new Scanner(System.in);
 String input = scanner.nextLine();
-if (input equals = " ")) {
+System.out.println("Welcome!")
+System.out.println("Press the Enter button to start.")
+if (input.isEmpty() {
 System.out.println("Where would you like to go first?")
 
-Scanner scanner = new Scanner(System.in);
-String input = scanner.nextLine();
-if (input equals = "learn AI")) {
-System.out.println("AI is )
 
-Scanner scanner = new Scanner(System.in);
-String input = scanner.nextLine();
-if (input equals = " ")) {
-System.out.println("Where would you like to go first?")
-
-Scanner scanner = new Scanner(System.in);
-String input = scanner.nextLine();
-if (input equals = "learn Robotics")) {
-System.out.println("AI is )
-
-Scanner scanner = new Scanner(System.in);
-String input = scanner.nextLine();
-if (input equals = "learn Engineering")) {
-System.out.println("AI is )
+if (input.equalsIgnoreCase("learn AI")) { 
+System.out.println("You inspect a language learning model in development.")
+}
+else if input.equalsIgnoreCase("learn Robotics")); 
+System.out.println("You inspect a massive robotic arm, useful for extraction missions.")
+}
+else if input.equalsIgnoreCase("learn Enginnering")); 
+System.out.println("You inspect blueprints for a new house ready to be built; as well as the nescessary calculations.)
+}
+else if input.equalsIgnoreCase("learn Quantum Computing")); 
+System.out.println("You inspect a supercomputer capable of great things.")
+}
 
    while (true) {     
-   String input = scanner.nextLine();
+   input = scanner.nextLine();
        if (input.equalsIgnoreCase("quit")) {
            System.out.println("Thank you for playing!")
            break;
@@ -46,39 +41,17 @@ System.out.println("AI is )
    }
   scanner.close(); 
 
-public class Room {
-    private string description;
-    private Map<String, Room> exits;
-    
-    public Room(String description) {
-        this.description = description;
-        this.exits = new HashMap<>();
-    }
-    public void setExit(String direction, Room room) {
-     exits.put(direction, room);
-    }
-public Room getExit(String direction) {
-    return exits.get(direction);
+if (input.equalsIgnoreCase("Inspect Items")) {
+if currentArea.equals("AI")); 
+System.out.println("You inspect a language learning model in development.")
 }
-public String getDescription() {
-    return description;
+else if currentArea.equals("Robotics")); 
+System.out.println("You inspect a massive robotic arm, useful for extraction missions.")
+}
+else if currentArea.equals("Enginnering")); 
+System.out.println("You inspect blueprints for a new house ready to be built; as well as the nescessary calculations.)
+}
+else if currentArea.equals("Quantum Computing")); 
+System.out.println("You inspect a supercomputer capable of great things.")
 }
 
-
-
-
-case inspect
-if currentRoom.getItem().eqauls
-System.out.println
-
-case inspect
-if currentRoom.getItem().eqauls
-System.out.println
-
-case inspect
-if currentRoom.getItem().eqauls
-System.out.println
-
-case inspect
-if currentRoom.getItem().eqauls
-System.out.println
