@@ -1,7 +1,7 @@
 Since i am a simple beginner at Java, i decided to make an introductory museum-like game. 
 Many students solutions will naturally look similar, since there are many straightforward ways to implement this assignment. 
 I created my own original idea as well as building the code shown. The idea and passion are all mine. 
-AI helped with some code, since i am a beginner.
+AI helped with some code, since i am a beginner. One month total.
 
 import java.util.Map;
 import java.util.Scanner; 
