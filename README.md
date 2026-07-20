@@ -1,4 +1,4 @@
-//I started by coding in code.org, then translated to text-console java in https://www.jdoodle.com/online-java-compiler, then pasted to GitHub. AI assisted me in three lines of code. Also somewhat helped with debugging, however i did most of it. My own original code and project driven by my passion for hands-on research. Spent 2 days brainstorming, then 3 hours a week for 1 week making Javascript code, then 4 hours a week finding a control group to conduct research. 
+//I started by coding in code.org, then translated to text-console java in https://www.jdoodle.com/online-java-compiler, then pasted to GitHub. AI assisted me in three lines of code. Also somewhat helped with debugging, however i did most of it. My own original code and project driven by my passion for hands-on research. Spent 2 days brainstorming, then 3 hours a week for 1 week making Javascript code, then 4 hours a week finding a control group to conduct research. Took two months to complete.
  (java)
 
 import java.util.Random
